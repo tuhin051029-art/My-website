@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TuHin Creative Studio</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+:root{
+  --bg:#070b1f;
+  --card:#111936;
+  --card2:#162143;
+  --text:#ffffff;
+  --muted:#aeb9d4;
+  --primary:#4d8dff;
+  --border:#26365f;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 6%;
+  background:rgba(7,11,31,.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+
+.logo{
+  font-size:27px;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.menu{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.menu a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:14px;
+}
+
+.menu a:hover{
+  color:var(--primary);
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:var(--primary);
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:20px;
+}
+
+.theme{
+  border:0;
+  background:var(--primary);
+  color:white;
+  padding:7px 10px;
+  border-radius:20px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 20px;
+  background:
+  radial-gradient(circle at 50% 0,#203d88 0,#111a42 35%,#070b1f 75%);
+}
+
+.hero-content{
+  max-width:800px;
+}
+
+.profile{
+  width:130px;
+  height:130px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid var(--primary);
+  margin-bottom:20px;
+}
+
+.hero small{
+  color:var(--primary);
+  letter-spacing:4px;
+}
+
+.hero h1{
+  font-size:50px;
+  margin:15px 0;
+}
+
+.hero h1 span{
+  color:var(--primary);
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  max-width:650px;
+  margin:auto;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:13px 25px;
+  background:var(--primary);
+  color:white;
+  text-decoration:none;
+  border:0;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* COMMON */
+
+section{
+  padding:80px 6%;
+  text-align:center;
+}
+
+section h2{
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+section h2 span{
+  color:var(--primary);
+}
+
+.desc{
+  max-width:720px;
+  margin:auto;
+  color:var(--muted);
+}
+
+/* PROFILE */
+
+.profile-card{
+  max-width:750px;
+  margin:35px auto;
+  padding:35px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+
+/* SKILLS */
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:35px;
+}
+
+.skill{
+  padding:11px 22px;
+  background:#21479e;
+  border-radius:30px;
+}
+
+/* PORTFOLIO */
+
+.projects{
+  max-width:1000px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.project{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:25px;
+  border-radius:18px;
+  transition:.25s;
+}
+
+.project:hover{
+  transform:translateY(-7px);
+  border-color:var(--primary);
+}
+
+.project-icon{
+  font-size:50px;
+  margin-bottom:12px;
+}
+
+.project p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* STUDIO */
+
+.studio{
+  background:#0b1230;
+}
+
+.editor{
+  max-width:1100px;
+  margin:35px auto;
+  padding:20px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+.toolbar input,
+.toolbar button{
+  padding:10px;
+  border-radius:7px;
+  border:0;
+}
+
+.toolbar input[type="text"]{
+  width:150px;
+}
+
+.toolbar input[type="number"]{
+  width:80px;
+}
+
+.toolbar button{
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.toolbar button:hover{
+  opacity:.85;
+}
+
+.toolbar .danger{
+  background:#d33b52;
+}
+
+.toolbar .purple{
+  background:#7546c7;
+}
+
+.canvas-box{
+  overflow:auto;
+  background:#252525;
+  padding:12px;
+  border-radius:12px;
+}
+
+#canvas{
+  display:block;
+  width:800px;
+  height:500px;
+  margin:auto;
+  background:white;
+  touch-action:none;
+}
+
+.editor-info{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:12px;
+}
+
+/* LEARN */
+
+.lessons{
+  max-width:1000px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.lesson{
+  text-align:left;
+  background:var(--card);
+  padding:25px;
+  border-radius:18px;
+  border:1px solid var(--border);
+}
+
+.lesson h3{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.lesson p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* CONTACT */
+
+.contact{
+  max-width:600px;
+  margin:35px auto;
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  border:1px solid var(--border);
+}
+
+.contact p{
+  margin:12px;
+  color:var(--muted);
+}
+
+.contact a{
+  color:var(--primary);
+  text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#040713;
+  color:#8995b2;
+}
+
+/* TOP */
+
+#top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:45px;
+  height:45px;
+  border:0;
+  border-radius:50%;
+  background:var(--primary);
+  color:white;
+  font-size:20px;
+  display:none;
+  z-index:999;
+}
+
+/* LIGHT MODE */
+
+body.light{
+  --bg:#f3f6ff;
+  --card:#ffffff;
+  --card2:#ffffff;
+  --text:#14203b;
+  --muted:#56627a;
+  --border:#dce3f2;
+}
+
+body.light nav{
+  background:rgba(255,255,255,.95);
+}
+
+body.light .studio{
+  background:#e9efff;
+}
+
+body.light .hero{
+  background:linear-gradient(135deg,#f5f8ff,#dce8ff);
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+  .menu-btn{
+    display:block;
+  }
+
+  .menu{
+    display:none;
+    position:absolute;
+    top:64px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    padding:20px;
+    background:#0b1230;
+    border-bottom:1px solid var(--border);
+  }
+
+  .menu.show{
+    display:flex;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section{
+    padding:65px 5%;
+  }
+
+  section h2{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+  <div class="logo">
+    TuHin.
+  </div>
+
+  <button class="menu-btn" onclick="toggleMenu()">
+    ☰
+  </button>
+
+  <div class="menu" id="menu">
+
+    <a href="#home">Home</a>
+    <a href="#profile">Profile</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#studio">Design</a>
+    <a href="#learn">Learn</a>
+    <a href="#contact">Contact</a>
+
+    <button class="theme" onclick="toggleTheme()">
+      🌙
+    </button>
+
+  </div>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <img
+      class="profile"
+      src="https://via.placeholder.com/130"
+      alt="TuHin">
+
+    <small>
+      WELCOME TO TUHIN CREATIVE STUDIO
+    </small>
+
+    <h1>
+      Hello, I'm <span>TuHin</span> 👋
+    </h1>
+
+    <p>
+      I am learning web development, graphic design
+      and logo design. Explore my work or create
+      your own design using my online design studio.
+    </p>
+
+    <a class="btn" href="#studio">
+      🎨 Start Designing
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile">
+
+  <h2>
+    My <span>Profile</span>
+  </h2>
+
+  <div class="profile-card">
+
+    <h3>Hi, I'm TuHin 👋</h3>
+
+    <br>
+
+    <p class="desc">
+      I am a beginner web developer and graphic design
+      learner. I enjoy creating websites, logos and
+      creative digital designs.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+  <h2>
+    My <span>Skills</span>
+  </h2>
+
+  <p class="desc">
+    Skills I am currently learning and practicing.
+  </p>
+
+  <div class="skills">
+
+    <div class="skill">HTML</div>
+    <div class="skill">CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">Web Design</div>
+    <div class="skill">Graphic Design</div>
+    <div class="skill">Logo Design</div>
+
+  </div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+
+  <h2>
+    My <span>Portfolio</span>
+  </h2>
+
+  <p class="desc">
+    My websites, logos and graphic design projects.
+  </p>
+
+  <div class="projects">
+
+    <div class="project">
+
+      <div class="project-icon">🌐</div>
+
+      <h3>Website Design</h3>
+
+      <p>
+        Modern responsive website projects.
+      </p>
+
+    </div>
+
+    <div class="project">
+
+      <div class="project-icon">🎨</div>
+
+      <h3>Logo Design</h3>
+
+      <p>
+        Creative logo and brand identity projects.
+      </p>
+
+    </div>
+
+    <div class="project">
+
+      <div class="project-icon">🖼️</div>
+
+      <h3>Graphics Design</h3>
+
+      <p>
+        Posters, social media graphics and more.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DESIGN STUDIO -->
+
+<section class="studio" id="studio">
+
+  <h2>
+    🎨 <span>Design Studio</span>
+  </h2>
+
+  <p class="desc">
+    Create a simple logo or graphic design directly
+    inside this website.
+  </p>
+
+
+  <div class="editor">
+
+    <div class="toolbar">
+
+      <input
+        id="textInput"
+        type="text"
+        placeholder="Write text">
+
+      <input
+        id="fontSize"
+        type="number"
+        value="45"
+        min="10"
+        max="150">
+
+      <input
+        id="color"
+        type="color"
+        value="#2864e8">
+
+      <button onclick="addText()">
+        + Text
+      </button>
+
+      <button onclick="addCircle()">
+        + Circle
+      </button>
+
+      <button onclick="addSquare()">
+        + Square
+      </button>
+
+      <button onclick="addRect()">
+        + Rectangle
+      </button>
+
+      <label class="toolbar button">
+
+        <button type="button">
+          + Image
+        </button>
+
+        <input
+          id="imageInput"
+          type="file"
+          accept="image/*"
+          hidden>
+
+      </label>
+
+      <button onclick="deleteSelected()" class="danger">
+        Delete
+      </button>
+
+      <button onclick="undo()" class="purple">
+        ↩ Undo
+      </button>
+
+      <button onclick="clearDesign()" class="danger">
+        Clear
+      </button>
+
+      <button onclick="downloadPNG()">
+        📥 Download PNG
+      </button>
+
+    </div>
+
+
+    <div class="canvas-box">
+
+      <canvas
+        id="canvas"
+        width="800"
+        height="500">
+      </canvas>
+
+    </div>
+
+    <p class="editor-info">
+      💡 Tap/click an object to select it.
+      Drag it with your finger or mouse to move it.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- LEARN -->
+
+<section id="learn">
+
+  <h2>
+    📚 Learn <span>Graphic Design</span>
+  </h2>
+
+  <p class="desc">
+    Learn the basic principles of good design.
+  </p>
+
+  <div class="lessons">
+
+    <div class="lesson">
+      <h3>01. Color</h3>
+      <p>
+        Learn how colors work together and how
+        to choose useful color combinations.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>02. Typography</h3>
+      <p>
+        Learn fonts, text sizes, spacing and
+        readability.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>03. Logo Design</h3>
+      <p>
+        Learn about shapes, symbols, typography
+        and simple brand identity.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>04. Layout</h3>
+      <p>
+        Learn how to arrange text and images
+        in an organized design.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>05. Contrast</h3>
+      <p>
+        Learn how contrast makes important
+        parts of a design easier to notice.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>06. Practice</h3>
+      <p>
+        Keep making different designs and
+        improve through practice.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+  <h2>
+    Contact <span>Me</span>
+  </h2>
+
+  <div class="contact">
+
+    <p>
+      📧 Email:
+      <a href="mailto:your@email.com">
+        your@email.com
+      </a>
+    </p>
+
+    <p>
+      📱 WhatsApp:
+      <a href="#">
+        Add WhatsApp
+      </a>
+    </p>
+
+    <p>
+      🌐 Facebook:
+      <a href="#">
+        Add Facebook
+      </a>
+    </p>
+
+    <p>
+      📸 Instagram:
+      <a href="#">
+        Add Instagram
+      </a>
+    </p>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  © 2026 TuHin Creative Studio
+
+</footer>
+
+
+<button id="top" onclick="goTop()">
+  ↑
+</button>
+
+
+<script>
+
+/* ================= MENU ================= */
+
+function toggleMenu(){
+
+  document
+    .getElementById("menu")
+    .classList.toggle("show");
+
+}
+
+
+/* ================= THEME ================= */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("light");
+
+}
+
+
+/* ================= CANVAS ================= */
+
+const canvas =
+  document.getElementById("canvas");
+
+const ctx =
+  canvas.getContext("2d");
+
+let objects = [];
+
+let selected = null;
+
+let dragging = false;
+
+let offsetX = 0;
+
+let offsetY = 0;
+
+
+/* Draw */
+
+function draw(){
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  ctx.fillStyle = "white";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+
+  objects.forEach(obj => {
+
+    ctx.save();
+
+
+    if(obj.type === "text"){
+
+      ctx.fillStyle = obj.color;
+
+      ctx.font =
+        "bold " + obj.size + "px Arial";
+
+      ctx.textAlign = "center";
+
+      ctx.textBaseline = "middle";
+
+      ctx.fillText(
+        obj.text,
+        obj.x,
+        obj.y
+      );
+
+    }
+
+
+    if(obj.type === "circle"){
+
+      ctx.beginPath();
+
+      ctx.arc(
+        obj.x,
+        obj.y,
+        obj.radius,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle = obj.color;
+
+      ctx.fill();
+
+    }
+
+
+    if(obj.type === "square"){
+
+      ctx.fillStyle = obj.color;
+
+      ctx.fillRect(
+        obj.x - obj.size/2,
+        obj.y - obj.size/2,
+        obj.size,
+        obj.size
+      );
+
+    }
+
+
+    if(obj.type === "rect"){
+
+      ctx.fillStyle = obj.color;
+
+      ctx.fillRect(
+        obj.x - obj.w/2,
+        obj.y - obj.h/2,
+        obj.w,
+        obj.h
+      );
+
+    }
+
+
+    if(obj.type === "image"){
+
+      ctx.drawImage(
+        obj.image,
+        obj.x - obj.w/2,
+        obj.y - obj.h/2,
+        obj.w,
+        obj.h
+      );
+
+    }
+
+
+    if(obj === selected){
+
+      ctx.strokeStyle =
+        "#ff2f92";
+
+      ctx.lineWidth = 3;
+
+      ctx.setLineDash([7,5]);
+
+      ctx.strokeRect(
+        obj.x - 80,
+        obj.y - 60,
+        160,
+        120
+      );
+
+      ctx.setLineDash([]);
+
+    }
+
+
+    ctx.restore();
+
+  });
+
+}
+
+
+/* ================= ADD TEXT ================= */
+
+function addText(){
+
+  const text =
+    document.getElementById("textInput").value;
+
+  if(!text.trim()){
+
+    alert("আগে কিছু text লিখো!");
+
+    return;
+
+  }
+
+
+  const obj = {
+
+    type:"text",
+
+    text:text,
+
+    x:400,
+
+    y:250,
+
+    color:
+      document.getElementById("color").value,
+
+    size:
+      Number(
+        document.getElementById("fontSize").value
+      )
+
+  };
+
+
+  objects.push(obj);
+
+  selected = obj;
+
+  draw();
+
+}
+
+
+/* ================= CIRCLE ================= */
+
+function addCircle(){
+
+  const obj = {
+
+    type:"circle",
+
+    x:400,
+
+    y:250,
+
+    radius:70,
+
+    color:
+      document.getElementById("color").value
+
+  };
+
+
+  objects.push(obj);
+
+  selected = obj;
+
+  draw();
+
+}
+
+
+/* ================= SQUARE ================= */
+
+function addSquare(){
+
+  const obj = {
+
+    type:"square",
+
+    x:400,
+
+    y:250,
+
+    size:130,
+
+    color:
+      document.getElementById("color").value
+
+  };
+
+
+  objects.push(obj);
+
+  selected = obj;
+
+  draw();
+
+}
+
+
+/* ================= RECTANGLE ================= */
+
+function addRect(){
+
+  const obj = {
+
+    type:"rect",
+
+    x:400,
+
+    y:250,
+
+    w:240,
+
+    h:130,
+
+    color:
+      document.getElementById("color").value
+
+  };
+
+
+  objects.push(obj);
+
+  selected = obj;
+
+  draw();
+
+}
+
+
+/* ================= IMAGE ================= */
+
+document
+  .getElementById("imageInput")
+  .addEventListener(
+    "change",
+    function(e){
+
+      const file =
+        e.target.files[0];
+
+      if(!file) return;
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(event){
+
+          const img =
+            new Image();
+
+
+          img.onload =
+            function(){
+
+              let w = 250;
+
+              let h =
+                img.height *
+                (w / img.width);
+
+
+              if(h > 250){
+
+                h = 250;
+
+                w =
+                  img.width *
+                  (h / img.height);
+
+              }
+
+
+              const obj = {
+
+                type:"image",
+
+                image:img,
+
+                x:400,
+
+                y:250,
+
+                w:w,
+
+                h:h
+
+              };
+
+
+              objects.push(obj);
+
+              selected = obj;
+
+              draw();
+
+            };
+
+
+          img.src =
+            event.target.result;
+
+        };
+
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+
+/* ================= POSITION ================= */
+
+function pointerPosition(e){
+
+  const rect =
+    canvas.getBoundingClientRect();
+
+
+  let clientX;
+  let clientY;
+
+
+  if(e.touches){
+
+    clientX =
+      e.touches[0].clientX;
+
+    clientY =
+      e.touches[0].clientY;
+
+  }else{
+
+    clientX =
+      e.clientX;
+
+    clientY =
+      e.clientY;
+
+  }
+
+
+  return {
+
+    x:
+      (clientX - rect.left)
+      * canvas.width
+      / rect.width,
+
+    y:
+      (clientY - rect.top)
+      * canvas.height
+      / rect.height
+
+  };
+
+}
+
+
+/* ================= SELECT OBJECT ================= */
+
+function selectObject(x,y){
+
+  for(
+    let i=objects.length-1;
+    i>=0;
+    i--
+  ){
+
+    const obj = objects[i];
+
+
+    if(obj.type === "circle"){
+
+      const d =
+        Math.sqrt(
+          (x-obj.x)**2 +
+          (y-obj.y)**2
+        );
+
+      if(d <= obj.radius)
+        return obj;
+
+    }
+
+
+    if(obj.type === "square"){
+
+      if(
+        x >= obj.x-obj.size/2 &&
+        x <= obj.x+obj.size/2 &&
+        y >= obj.y-obj.size/2 &&
+        y <= obj.y+obj.size/2
+      )
+        return obj;
+
+    }
+
+
+    if(obj.type === "rect"){
+
+      if(
+        x >= obj.x-obj.w/2 &&
+        x <= obj.x+obj.w/2 &&
+        y >= obj.y-obj.h/2 &&
+        y <= obj.y+obj.h/2
+      )
+        return obj;
+
+    }
+
+
+    if(obj.type === "image"){
+
+      if(
+        x >= obj.x-obj.w/2 &&
+        x <= obj.x+obj.w/2 &&
+        y >= obj.y-obj.h/2 &&
+        y <= obj.y+obj.h/2
+      )
+        return obj;
+
+    }
+
+
+    if(obj.type === "text"){
+
+      ctx.font =
+        "bold " + obj.size + "px Arial";
+
+      const width =
+        ctx.measureText(obj.text).width;
+
+
+      if(
+        x >= obj.x-width/2 &&
+        x <= obj.x+width/2 &&
+        y >= obj.y-obj.size/2 &&
+        y <= obj.y+obj.size/2
+      )
+        return obj;
+
+    }
+
+  }
+
+  return null;
+
+}
+
+
+/* ================= START DRAG ================= */
+
+function startDrag(e){
+
+  e.preventDefault();
+
+  const p =
+    pointerPosition(e);
+
+  selected =
+    selectObject(
+      p.x,
+      p.y
+    );
+
+
+  if(selected){
+
+    dragging = true;
+
+    offsetX =
+      p.x - selected.x;
+
+    offsetY =
+      p.y - selected.y;
+
+  }
+
+
+  draw();
+
+}
+
+
+/* ================= MOVE ================= */
+
+function moveObject(e){
+
+  if(!dragging || !selected)
+    return;
+
+  e.preventDefault();
+
+
+  const p =
+    pointerPosition(e);
+
+
+  selected.x =
+    p.x - offsetX;
+
+  selected.y =
+    p.y - offsetY;
+
+
+  draw();
+
+}
+
+
+/* ================= STOP ================= */
+
+function stopDrag(){
+
+  dragging = false;
+
+}
+
+
+/* Mouse */
+
+canvas.addEventListener(
+  "mousedown",
+  startDrag
+);
+
+canvas.addEventListener(
+  "mousemove",
+  moveObject
+);
+
+canvas.addEventListener(
+  "mouseup",
+  stopDrag
+);
+
+canvas.addEventListener(
+  "mouseleave",
+  stopDrag
+);
+
+
+/* Touch */
+
+canvas.addEventListener(
+  "touchstart",
+  startDrag,
+  {passive:false}
+);
+
+canvas.addEventListener(
+  "touchmove",
+  moveObject,
+  {passive:false}
+);
+
+canvas.addEventListener(
+  "touchend",
+  stopDrag
+);
+
+
+/* ================= DELETE ================= */
+
+function deleteSelected(){
+
+  if(!selected){
+
+    alert("আগে একটা object select করো!");
+
+    return;
+
+  }
+
+
+  const index =
+    objects.indexOf(selected);
+
+
+  if(index >= 0){
+
+    objects.splice(
+      index,
+      1
+    );
+
+  }
+
+
+  selected = null;
+
+  draw();
+
+}
+
+
+/* ================= UNDO ================= */
+
+function undo(){
+
+  objects.pop();
+
+  selected = null;
+
+  draw();
+
+}
+
+
+/* ================= CLEAR ================= */
+
+function clearDesign(){
+
+  if(
+    confirm(
+      "পুরো design মুছে ফেলবে?"
+    )
+  ){
+
+    objects = [];
+
+    selected = null;
+
+    draw();
+
+  }
+
+}
+
+
+/* ================= DOWNLOAD ================= */
+
+function downloadPNG(){
+
+  selected = null;
+
+  draw();
+
+
+  const link =
+    document.createElement("a");
+
+
+  link.download =
+    "tuhin-design.png";
+
+
+  link.href =
+    canvas.toDataURL(
+      "image/png"
+    );
+
+
+  link.click();
+
+}
+
+
+/* ================= TOP ================= */
+
+window.addEventListener(
+  "scroll",
+  function(){
+
+    const button =
+      document.getElementById("top");
+
+
+    if(
+      window.scrollY > 400
+    ){
+
+      button.style.display =
+        "block";
+
+    }else{
+
+      button.style.display =
+        "none";
+
+    }
+
+  }
+);
+
+
+function goTop(){
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+}
+
+
+/* START */
+
+draw();
+
+</script>
+
+</body>
+  </html>
