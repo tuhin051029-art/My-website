@@ -1,344 +1,737 @@
-/* =========================
-   ADVANCED DESIGN STUDIO
-========================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const canvas =
-  document.getElementById("designCanvas");
+<title>TuHin | Creative Studio</title>
 
-const ctx =
-  canvas.getContext("2d");
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-let uploadedImage = null;
+:root{
+  --bg:#070d25;
+  --card:#101a3c;
+  --text:#fff;
+  --muted:#b8c2df;
+  --blue:#4f9cff;
+  --border:#263761;
+}
 
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
 
-/* Draw Design */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#080e27;
+  border-bottom:1px solid var(--border);
+  padding:14px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-function drawDesign(){
+.logo{
+  color:var(--blue);
+  font-size:24px;
+  font-weight:bold;
+}
 
-  const text =
-    document.getElementById("designText").value;
+nav{
+  display:flex;
+  gap:15px;
+}
 
-  const size =
-    Number(
-      document.getElementById("textSize").value
-    );
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+}
 
-  const textColor =
-    document.getElementById("textColor").value;
+.menu-btn{
+  display:none;
+  background:#2764ff;
+  border:0;
+  color:white;
+  border-radius:8px;
+  padding:8px 12px;
+}
 
-  const bgColor =
-    document.getElementById("bgColor").value;
+section{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 6%;
+}
 
-  const font =
-    document.getElementById("fontStyle").value;
+.hero{
+  min-height:85vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
-  const shape =
-    document.getElementById("shape").value;
+.hero small{
+  color:var(--blue);
+  letter-spacing:2px;
+}
 
+.hero h1{
+  font-size:42px;
+  margin:20px 0;
+}
 
-  /* Background */
+.blue{
+  color:var(--blue);
+}
 
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+button{
+  background:#2764ff;
+  color:white;
+  border:0;
+  padding:11px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  margin:5px;
+}
 
-  ctx.fillStyle = bgColor;
+button:hover{
+  opacity:.85;
+}
 
-  ctx.fillRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+h2{
+  text-align:center;
+  margin-bottom:8px;
+}
 
+.subtitle{
+  color:var(--muted);
+  text-align:center;
+  margin-bottom:25px;
+}
 
-  /* Shape */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  margin:15px 0;
+}
 
-  ctx.fillStyle = "rgba(255,255,255,0.12)";
+input,
+textarea,
+select{
+  width:100%;
+  padding:12px;
+  margin:6px 0 12px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:#080f29;
+  color:white;
+}
 
+textarea{
+  min-height:90px;
+}
 
-  if(shape === "circle"){
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
 
-    ctx.beginPath();
+.skill{
+  background:#183a9c;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:13px;
+}
 
-    ctx.arc(
-      canvas.width / 2,
-      canvas.height / 2,
-      100,
-      0,
-      Math.PI * 2
-    );
+.profile{
+  text-align:center;
+}
 
-    ctx.fill();
+.profile-photo{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--blue);
+}
 
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+}
+
+.project{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:15px;
+}
+
+.project-img{
+  width:100%;
+  height:140px;
+  border-radius:10px;
+  object-fit:cover;
+  background:linear-gradient(135deg,#2475ff,#833cff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  margin-bottom:12px;
+}
+
+.studio{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+}
+
+.tools{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+#designCanvas{
+  width:100%;
+  max-width:650px;
+  height:auto;
+  background:white;
+  border-radius:10px;
+  display:block;
+  margin:20px auto;
+}
+
+.center{
+  text-align:center;
+}
+
+.lesson{
+  cursor:pointer;
+}
+
+.lesson-content{
+  display:none;
+  color:var(--muted);
+  margin-top:10px;
+}
+
+.lesson.active .lesson-content{
+  display:block;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#050a1c;
+  color:#8995b5;
+}
+
+@media(max-width:700px){
+
+  nav{
+    display:none;
   }
 
-
-  if(shape === "square"){
-
-    ctx.fillRect(
-      200,
-      50,
-      200,
-      200
-    );
-
+  .menu-btn{
+    display:block;
   }
 
-
-  if(shape === "rounded"){
-
-    roundRect(
-      ctx,
-      170,
-      50,
-      260,
-      200,
-      30
-    );
-
-    ctx.fill();
-
+  nav.show{
+    display:flex;
+    position:absolute;
+    top:58px;
+    right:10px;
+    background:#101a3c;
+    padding:15px;
+    border-radius:12px;
+    flex-direction:column;
   }
 
-
-  /* Uploaded Image */
-
-  if(uploadedImage){
-
-    const maxSize = 130;
-
-    let width =
-      uploadedImage.width;
-
-    let height =
-      uploadedImage.height;
-
-
-    if(width > height){
-
-      height =
-        height * maxSize / width;
-
-      width = maxSize;
-
-    }else{
-
-      width =
-        width * maxSize / height;
-
-      height = maxSize;
-
-    }
-
-
-    ctx.drawImage(
-      uploadedImage,
-      canvas.width / 2 - width / 2,
-      35,
-      width,
-      height
-    );
-
+  .hero h1{
+    font-size:32px;
   }
 
+  section{
+    padding:55px 5%;
+  }
 
-  /* Text */
-
-  ctx.fillStyle = textColor;
-
-  ctx.font =
-    "bold " + size + "px " + font;
-
-  ctx.textAlign = "center";
-
-  ctx.textBaseline = "middle";
-
-
-  ctx.fillText(
-    text || "Your Logo",
-    canvas.width / 2,
-    uploadedImage
-      ? canvas.height - 70
-      : canvas.height / 2
-  );
-
+  .tools{
+    grid-template-columns:1fr;
+  }
 }
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">TuHin.</div>
+
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#profile">Profile</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#studio">Studio</a>
+    <a href="#learn">Learn</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</header>
 
 
-/* Rounded rectangle */
+<!-- HOME -->
 
-function roundRect(
-  ctx,
-  x,
-  y,
-  width,
-  height,
-  radius
-){
+<section class="hero" id="home">
 
-  ctx.beginPath();
+  <small>WELCOME TO MY CREATIVE WORLD</small>
 
-  ctx.moveTo(x + radius, y);
+  <h1>
+    Hello, I'm
+    <span class="blue">TuHin</span> 👋
+  </h1>
 
-  ctx.lineTo(
-    x + width - radius,
-    y
-  );
+  <p>
+    Graphic Design • Coding • Web Development
+  </p>
 
-  ctx.quadraticCurveTo(
-    x + width,
-    y,
-    x + width,
-    y + radius
-  );
+  <br>
 
-  ctx.lineTo(
-    x + width,
-    y + height - radius
-  );
+  <button onclick="goTo('studio')">
+    🎨 Create Design
+  </button>
 
-  ctx.quadraticCurveTo(
-    x + width,
-    y + height,
-    x + width - radius,
-    y + height
-  );
+  <button onclick="goTo('learn')">
+    📚 Learn Design
+  </button>
 
-  ctx.lineTo(
-    x + radius,
-    y + height
-  );
-
-  ctx.quadraticCurveTo(
-    x,
-    y + height,
-    x,
-    y + height - radius
-  );
-
-  ctx.lineTo(
-    x,
-    y + radius
-  );
-
-  ctx.quadraticCurveTo(
-    x,
-    y,
-    x + radius,
-    y
-  );
-
-  ctx.closePath();
-
-}
+</section>
 
 
-/* Upload Image */
+<!-- PROFILE -->
 
-function loadDesignImage(event){
+<section id="profile">
 
-  const file =
-    event.target.files[0];
+  <h2>👤 My Profile</h2>
 
-  if(!file) return;
+  <p class="subtitle">
+    Create your personal profile
+  </p>
 
+  <div class="card">
 
-  const reader =
-    new FileReader();
+    <input
+      id="profileName"
+      placeholder="Your name"
+    >
 
+    <textarea
+      id="profileBio"
+      placeholder="About yourself"
+    ></textarea>
 
-  reader.onload=function(e){
+    <input
+      id="profileSkill"
+      placeholder="Your skill"
+    >
 
-    uploadedImage =
-      new Image();
+    <input
+      id="profileImage"
+      type="file"
+      accept="image/*"
+    >
 
-    uploadedImage.onload=function(){
+    <button onclick="saveProfile()">
+      💾 Save Profile
+    </button>
 
-      drawDesign();
+  </div>
 
-    };
+  <div class="card profile" id="profileView">
 
-    uploadedImage.src =
-      e.target.result;
+    <div style="font-size:60px;">👤</div>
 
-  };
+    <h3>TuHin</h3>
 
+    <p>
+      Creative learner and designer.
+    </p>
 
-  reader.readAsDataURL(file);
+  </div>
 
-}
-
-
-/* Download */
-
-function downloadDesign(){
-
-  const link =
-    document.createElement("a");
-
-  link.download =
-    "TuHin-Design.png";
-
-  link.href =
-    canvas.toDataURL("image/png");
-
-  link.click();
-
-}
-
-
-/* Reset */
-
-function resetDesign(){
-
-  document.getElementById(
-    "designText"
-  ).value =
-    "TuHin Design";
+</section>
 
 
-  document.getElementById(
-    "textSize"
-  ).value =
-    50;
+<!-- SKILLS -->
+
+<section id="skills">
+
+  <h2>🛠️ My Skills</h2>
+
+  <p class="subtitle">
+    Things I am learning
+  </p>
+
+  <div class="skills">
+
+    <span class="skill">HTML</span>
+    <span class="skill">CSS</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">Logo Design</span>
+    <span class="skill">Graphic Design</span>
+    <span class="skill">Web Design</span>
+
+  </div>
+
+</section>
 
 
-  document.getElementById(
-    "textColor"
-  ).value =
-    "#ffffff";
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+
+  <h2>🖼️ My Portfolio</h2>
+
+  <p class="subtitle">
+    Add your creative projects
+  </p>
+
+  <div class="card">
+
+    <input
+      id="projectTitle"
+      placeholder="Project title"
+    >
+
+    <textarea
+      id="projectDescription"
+      placeholder="Project description"
+    ></textarea>
+
+    <input
+      id="projectImage"
+      type="file"
+      accept="image/*"
+    >
+
+    <button onclick="addProject()">
+      ➕ Add Project
+    </button>
+
+  </div>
+
+  <div class="portfolio-grid" id="portfolioList">
+
+    <div class="project">
+
+      <div class="project-img">
+        🌐
+      </div>
+
+      <h3>My First Website</h3>
+
+      <p>
+        My first web project.
+      </p>
+
+    </div>
+
+    <div class="project">
+
+      <div class="project-img">
+        🎨
+      </div>
+
+      <h3>Logo Design</h3>
+
+      <p>
+        A creative logo project.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-  document.getElementById(
-    "bgColor"
-  ).value =
-    "#2764ff";
+<!-- DESIGN STUDIO -->
+
+<section id="studio">
+
+  <h2>🎨 Design Studio</h2>
+
+  <p class="subtitle">
+    Create a simple logo or graphic
+  </p>
+
+  <div class="studio">
+
+    <div class="tools">
+
+      <div>
+
+        <label>Text</label>
+
+        <input
+          id="designText"
+          value="TuHin Design"
+          oninput="drawDesign()"
+        >
+
+      </div>
+
+      <div>
+
+        <label>Font</label>
+
+        <select
+          id="fontStyle"
+          onchange="drawDesign()"
+        >
+
+          <option value="Arial">
+            Arial
+          </option>
+
+          <option value="Georgia">
+            Georgia
+          </option>
+
+          <option value="Verdana">
+            Verdana
+          </option>
+
+          <option value="Courier New">
+            Courier New
+          </option>
+
+        </select>
+
+      </div>
+
+      <div>
+
+        <label>Text Size</label>
+
+        <input
+          id="textSize"
+          type="range"
+          min="20"
+          max="90"
+          value="50"
+          oninput="drawDesign()"
+        >
+
+      </div>
+
+      <div>
+
+        <label>Text Color</label>
+
+        <input
+          id="textColor"
+          type="color"
+          value="#ffffff"
+          onchange="drawDesign()"
+        >
+
+      </div>
+
+      <div>
+
+        <label>Background</label>
+
+        <input
+          id="bgColor"
+          type="color"
+          value="#2764ff"
+          onchange="drawDesign()"
+        >
+
+      </div>
+
+      <div>
+
+        <label>Shape</label>
+
+        <select
+          id="shape"
+          onchange="drawDesign()"
+        >
+
+          <option value="none">
+            None
+          </option>
+
+          <option value="circle">
+            Circle
+          </option>
+
+          <option value="square">
+            Square
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <br>
+
+    <label>Upload Image</label>
+
+    <input
+      id="designImage"
+      type="file"
+      accept="image/*"
+      onchange="loadImage(event)"
+    >
+
+    <canvas
+      id="designCanvas"
+      width="650"
+      height="350"
+    ></canvas>
+
+    <div class="center">
+
+      <button onclick="drawDesign()">
+        🔄 Update
+      </button>
+
+      <button onclick="downloadDesign()">
+        ⬇️ Download PNG
+      </button>
+
+      <button onclick="resetDesign()">
+        ♻️ Reset
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-  document.getElementById(
-    "fontStyle"
-  ).value =
-    "Arial";
+<!-- LEARN -->
+
+<section id="learn">
+
+  <h2>📚 Learn Graphic Design</h2>
+
+  <p class="subtitle">
+    Click a lesson
+  </p>
+
+  <div
+    class="card lesson"
+    onclick="toggleLesson(this)"
+  >
+
+    <h3>1. 🎨 Color Theory</h3>
+
+    <div class="lesson-content">
+
+      <p>
+        Learn how colors work together.
+        Practice primary, secondary and
+        complementary colors.
+      </p>
+
+      <button onclick="completeLesson(event)">
+        ✅ Complete
+      </button>
+
+    </div>
+
+  </div>
 
 
-  document.getElementById(
-    "shape"
-  ).value =
-    "none";
+  <div
+    class="card lesson"
+    onclick="toggleLesson(this)"
+  >
+
+    <h3>2. ✍️ Typography</h3>
+
+    <div class="lesson-content">
+
+      <p>
+        Learn about fonts, size,
+        spacing and alignment.
+      </p>
+
+      <button onclick="completeLesson(event)">
+        ✅ Complete
+      </button>
+
+    </div>
+
+  </div>
 
 
-  document.getElementById(
-    "imageUpload"
-  ).value =
-    "";
+  <div
+    class="card lesson"
+    onclick="toggleLesson(this)"
+  >
+
+    <h3>3. 🖼️ Logo Design</h3>
+
+    <div class="lesson-content">
+
+      <p>
+        A good logo should be simple,
+        clear and recognizable.
+      </p>
+
+      <button onclick="completeLesson(event)">
+        ✅ Complete
+      </button>
+
+    </div>
+
+  </div>
 
 
-  uploadedImage = null;
+  <div
+    class="card lesson"
+    onclick="toggleLesson(this)"
+  >
 
-  drawDesign();
+    <h3>4. 📐 Composition</h3>
 
-}
+    <div class="lesson-content">
+
+      <p>
+        Learn balance, spacing,
+        contrast and visual hierarchy.
+      </p>
+
+      <button onclick="completeLesson(event)">
+        ✅ Complete
+      </
