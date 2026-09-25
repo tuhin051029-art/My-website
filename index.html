@@ -1,20 +1,344 @@
-background:#2764ff;
-  color:white;
-  font-size:15px;
-  cursor:pointer;
-  margin:5px;
+/* =========================
+   ADVANCED DESIGN STUDIO
+========================= */
+
+const canvas =
+  document.getElementById("designCanvas");
+
+const ctx =
+  canvas.getContext("2d");
+
+let uploadedImage = null;
+
+
+/* Draw Design */
+
+function drawDesign(){
+
+  const text =
+    document.getElementById("designText").value;
+
+  const size =
+    Number(
+      document.getElementById("textSize").value
+    );
+
+  const textColor =
+    document.getElementById("textColor").value;
+
+  const bgColor =
+    document.getElementById("bgColor").value;
+
+  const font =
+    document.getElementById("fontStyle").value;
+
+  const shape =
+    document.getElementById("shape").value;
+
+
+  /* Background */
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  ctx.fillStyle = bgColor;
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+
+  /* Shape */
+
+  ctx.fillStyle = "rgba(255,255,255,0.12)";
+
+
+  if(shape === "circle"){
+
+    ctx.beginPath();
+
+    ctx.arc(
+      canvas.width / 2,
+      canvas.height / 2,
+      100,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+  }
+
+
+  if(shape === "square"){
+
+    ctx.fillRect(
+      200,
+      50,
+      200,
+      200
+    );
+
+  }
+
+
+  if(shape === "rounded"){
+
+    roundRect(
+      ctx,
+      170,
+      50,
+      260,
+      200,
+      30
+    );
+
+    ctx.fill();
+
+  }
+
+
+  /* Uploaded Image */
+
+  if(uploadedImage){
+
+    const maxSize = 130;
+
+    let width =
+      uploadedImage.width;
+
+    let height =
+      uploadedImage.height;
+
+
+    if(width > height){
+
+      height =
+        height * maxSize / width;
+
+      width = maxSize;
+
+    }else{
+
+      width =
+        width * maxSize / height;
+
+      height = maxSize;
+
+    }
+
+
+    ctx.drawImage(
+      uploadedImage,
+      canvas.width / 2 - width / 2,
+      35,
+      width,
+      height
+    );
+
+  }
+
+
+  /* Text */
+
+  ctx.fillStyle = textColor;
+
+  ctx.font =
+    "bold " + size + "px " + font;
+
+  ctx.textAlign = "center";
+
+  ctx.textBaseline = "middle";
+
+
+  ctx.fillText(
+    text || "Your Logo",
+    canvas.width / 2,
+    uploadedImage
+      ? canvas.height - 70
+      : canvas.height / 2
+  );
+
 }
 
-button:hover{
-  opacity:.85;
-  transform:translateY(-1px);
+
+/* Rounded rectangle */
+
+function roundRect(
+  ctx,
+  x,
+  y,
+  width,
+  height,
+  radius
+){
+
+  ctx.beginPath();
+
+  ctx.moveTo(x + radius, y);
+
+  ctx.lineTo(
+    x + width - radius,
+    y
+  );
+
+  ctx.quadraticCurveTo(
+    x + width,
+    y,
+    x + width,
+    y + radius
+  );
+
+  ctx.lineTo(
+    x + width,
+    y + height - radius
+  );
+
+  ctx.quadraticCurveTo(
+    x + width,
+    y + height,
+    x + width - radius,
+    y + height
+  );
+
+  ctx.lineTo(
+    x + radius,
+    y + height
+  );
+
+  ctx.quadraticCurveTo(
+    x,
+    y + height,
+    x,
+    y + height - radius
+  );
+
+  ctx.lineTo(
+    x,
+    y + radius
+  );
+
+  ctx.quadraticCurveTo(
+    x,
+    y,
+    x + radius,
+    y
+  );
+
+  ctx.closePath();
+
 }
 
-.secondary{
-  background:#283452;
+
+/* Upload Image */
+
+function loadDesignImage(event){
+
+  const file =
+    event.target.files[0];
+
+  if(!file) return;
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload=function(e){
+
+    uploadedImage =
+      new Image();
+
+    uploadedImage.onload=function(){
+
+      drawDesign();
+
+    };
+
+    uploadedImage.src =
+      e.target.result;
+
+  };
+
+
+  reader.readAsDataURL(file);
+
 }
 
-h2{
-  text-align:center;
-  margin-bottom:10px;
-  font-size:30
+
+/* Download */
+
+function downloadDesign(){
+
+  const link =
+    document.createElement("a");
+
+  link.download =
+    "TuHin-Design.png";
+
+  link.href =
+    canvas.toDataURL("image/png");
+
+  link.click();
+
+}
+
+
+/* Reset */
+
+function resetDesign(){
+
+  document.getElementById(
+    "designText"
+  ).value =
+    "TuHin Design";
+
+
+  document.getElementById(
+    "textSize"
+  ).value =
+    50;
+
+
+  document.getElementById(
+    "textColor"
+  ).value =
+    "#ffffff";
+
+
+  document.getElementById(
+    "bgColor"
+  ).value =
+    "#2764ff";
+
+
+  document.getElementById(
+    "fontStyle"
+  ).value =
+    "Arial";
+
+
+  document.getElementById(
+    "shape"
+  ).value =
+    "none";
+
+
+  document.getElementById(
+    "imageUpload"
+  ).value =
+    "";
+
+
+  uploadedImage = null;
+
+  drawDesign();
+
+}
