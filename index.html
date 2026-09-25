@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TuHin | Creative Studio</title>
+<title>TuHin Creative Studio</title>
 
 <style>
 *{
@@ -15,62 +15,99 @@
 }
 
 :root{
-  --bg:#070d25;
-  --card:#101a3c;
-  --text:#fff;
-  --muted:#b8c2df;
-  --blue:#4f9cff;
-  --border:#263761;
+  --bg:#07101f;
+  --card:#101d35;
+  --text:#ffffff;
+  --muted:#aebbd3;
+  --primary:#3d8bff;
+  --secondary:#173b78;
+  --border:#29446f;
+}
+
+body.light{
+  --bg:#f3f7ff;
+  --card:#ffffff;
+  --text:#101827;
+  --muted:#526176;
+  --primary:#1769ff;
+  --secondary:#dce9ff;
+  --border:#cbd8ec;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  transition:.3s;
 }
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:#080e27;
+  background:var(--card);
   border-bottom:1px solid var(--border);
-  padding:14px 5%;
+  padding:15px 20px;
+}
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
 .logo{
-  color:var(--blue);
+  color:var(--primary);
   font-size:24px;
   font-weight:bold;
 }
 
 nav{
   display:flex;
-  gap:15px;
+  align-items:center;
+  gap:8px;
 }
 
 nav a{
-  color:white;
+  color:var(--text);
   text-decoration:none;
-  font-size:13px;
+  padding:8px 10px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+nav a:hover{
+  background:var(--secondary);
 }
 
 .menu-btn{
   display:none;
-  background:#2764ff;
+  background:var(--secondary);
+  color:var(--text);
   border:0;
-  color:white;
-  border-radius:8px;
   padding:8px 12px;
+  border-radius:8px;
+  font-size:20px;
+}
+
+.theme-btn{
+  background:var(--primary);
+  color:white;
+  border:0;
+  padding:9px 12px;
+  border-radius:20px;
+  cursor:pointer;
 }
 
 section{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
-  padding:70px 6%;
+  padding:80px 20px;
 }
 
 .hero{
@@ -83,198 +120,271 @@ section{
 }
 
 .hero small{
-  color:var(--blue);
+  color:var(--primary);
+  font-weight:bold;
   letter-spacing:2px;
 }
 
 .hero h1{
-  font-size:42px;
+  font-size:52px;
   margin:20px 0;
 }
 
 .blue{
-  color:var(--blue);
+  color:var(--primary);
 }
 
-button{
-  background:#2764ff;
-  color:white;
+.hero p{
+  max-width:650px;
+}
+
+p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.btn{
+  display:inline-block;
   border:0;
-  padding:11px 18px;
+  background:var(--primary);
+  color:white;
+  padding:12px 20px;
   border-radius:25px;
   cursor:pointer;
-  margin:5px;
+  text-decoration:none;
+  margin:8px 4px;
 }
 
-button:hover{
-  opacity:.85;
+.btn.secondary{
+  background:var(--secondary);
+  color:var(--text);
 }
 
-h2{
+.title{
   text-align:center;
-  margin-bottom:8px;
+  margin-bottom:35px;
 }
 
-.subtitle{
-  color:var(--muted);
-  text-align:center;
-  margin-bottom:25px;
+.title h2{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--border);
+  padding:22px;
   border-radius:16px;
-  padding:20px;
-  margin:15px 0;
+  margin-bottom:20px;
 }
 
-input,
-textarea,
-select{
-  width:100%;
-  padding:12px;
-  margin:6px 0 12px;
-  border-radius:9px;
-  border:1px solid var(--border);
-  background:#080f29;
-  color:white;
-}
-
-textarea{
-  min-height:90px;
+.card h3{
+  margin-bottom:10px;
 }
 
 .skills{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:10px;
+  gap:12px;
 }
 
 .skill{
-  background:#183a9c;
-  padding:8px 14px;
-  border-radius:20px;
-  font-size:13px;
+  background:var(--secondary);
+  padding:10px 17px;
+  border-radius:25px;
 }
 
-.profile{
+.profile-box{
   text-align:center;
 }
 
 .profile-photo{
-  width:120px;
-  height:120px;
+  width:130px;
+  height:130px;
   border-radius:50%;
   object-fit:cover;
-  border:3px solid var(--blue);
+  border:4px solid var(--primary);
+  margin-bottom:15px;
+  background:var(--secondary);
 }
 
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:15px;
-}
-
-.project{
-  background:var(--card);
+input,textarea,select{
+  width:100%;
+  padding:12px;
+  margin:7px 0 12px;
+  border-radius:10px;
   border:1px solid var(--border);
-  border-radius:15px;
-  padding:15px;
+  background:var(--bg);
+  color:var(--text);
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+label{
+  color:var(--muted);
+  font-size:14px;
 }
 
 .project-img{
   width:100%;
-  height:140px;
-  border-radius:10px;
+  max-height:220px;
   object-fit:cover;
-  background:linear-gradient(135deg,#2475ff,#833cff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:45px;
+  border-radius:12px;
   margin-bottom:12px;
 }
 
 .studio{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:20px;
+}
+
+.controls{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:18px;
-  padding:18px;
+  border-radius:16px;
+  padding:20px;
 }
 
-.tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.preview{
+  background:#dfe5ef;
+  min-height:450px;
+  border-radius:16px;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
-#designCanvas{
+.design-canvas{
   width:100%;
-  max-width:650px;
-  height:auto;
-  background:white;
-  border-radius:10px;
-  display:block;
-  margin:20px auto;
+  max-width:600px;
+  min-height:350px;
+  background:#2764ff;
+  border-radius:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  color:white;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
 }
 
-.center{
-  text-align:center;
+.design-text{
+  font-size:42px;
+  font-weight:bold;
+  word-break:break-word;
+}
+
+.design-sub{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.shape{
+  width:70px;
+  height:70px;
+  background:#fff;
+  opacity:.8;
+  border-radius:50%;
+  margin-bottom:20px;
 }
 
 .lesson{
   cursor:pointer;
 }
 
-.lesson-content{
-  display:none;
-  color:var(--muted);
-  margin-top:10px;
+.lesson.done{
+  border-color:#27c46b;
 }
 
-.lesson.active .lesson-content{
-  display:block;
+.progress{
+  height:12px;
+  background:var(--secondary);
+  border-radius:20px;
+  overflow:hidden;
+  margin:15px 0;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#27c46b;
+  transition:.3s;
+}
+
+.contact{
+  text-align:center;
+}
+
+.contact a{
+  color:var(--primary);
+  text-decoration:none;
 }
 
 footer{
   text-align:center;
-  padding:30px;
-  background:#050a1c;
-  color:#8995b5;
+  padding:30px 20px;
+  background:var(--card);
+  border-top:1px solid var(--border);
+  color:var(--muted);
 }
 
-@media(max-width:700px){
+.hidden{
+  display:none;
+}
 
-  nav{
-    display:none;
-  }
+@media(max-width:800px){
 
   .menu-btn{
     display:block;
   }
 
-  nav.show{
-    display:flex;
+  nav{
+    display:none;
     position:absolute;
-    top:58px;
+    top:70px;
+    left:10px;
     right:10px;
-    background:#101a3c;
-    padding:15px;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:12px;
     border-radius:12px;
     flex-direction:column;
   }
 
+  nav.show{
+    display:flex;
+  }
+
+  nav a{
+    width:100%;
+    text-align:center;
+  }
+
   .hero h1{
-    font-size:32px;
+    font-size:38px;
   }
 
-  section{
-    padding:55px 5%;
+  .grid{
+    grid-template-columns:1fr;
   }
 
-  .tools{
+  .studio{
     grid-template-columns:1fr;
   }
 }
@@ -284,21 +394,24 @@ footer{
 <body>
 
 <header>
+<div class="header-inner">
 
-  <div class="logo">TuHin.</div>
+<div class="logo">TuHin.</div>
 
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#profile">Profile</a>
-    <a href="#skills">Skills</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#studio">Studio</a>
-    <a href="#learn">Learn</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+<nav id="nav">
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#profile" onclick="closeMenu()">Profile</a>
+<a href="#skills" onclick="closeMenu()">Skills</a>
+<a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+<a href="#studio" onclick="closeMenu()">Studio</a>
+<a href="#learn" onclick="closeMenu()">Learn</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+<button class="theme-btn" onclick="toggleTheme()">☀️/🌙</button>
+</nav>
 
+</div>
 </header>
 
 
@@ -306,26 +419,20 @@ footer{
 
 <section class="hero" id="home">
 
-  <small>WELCOME TO MY CREATIVE WORLD</small>
+<small>WELCOME TO MY CREATIVE WORLD</small>
 
-  <h1>
-    Hello, I'm
-    <span class="blue">TuHin</span> 👋
-  </h1>
+<h1>
+Hello, I'm <span class="blue">TuHin</span> 👋
+</h1>
 
-  <p>
-    Graphic Design • Coding • Web Development
-  </p>
+<p>
+Graphic Design • Coding • Web Development
+</p>
 
-  <br>
-
-  <button onclick="goTo('studio')">
-    🎨 Create Design
-  </button>
-
-  <button onclick="goTo('learn')">
-    📚 Learn Design
-  </button>
+<div>
+<a class="btn" href="#studio">🎨 Create Design</a>
+<a class="btn secondary" href="#portfolio">🚀 My Work</a>
+</div>
 
 </section>
 
@@ -334,52 +441,43 @@ footer{
 
 <section id="profile">
 
-  <h2>👤 My Profile</h2>
+<div class="title">
+<h2>👤 My Profile</h2>
+<p>Create and save your profile on this website.</p>
+</div>
 
-  <p class="subtitle">
-    Create your personal profile
-  </p>
+<div class="card profile-box">
 
-  <div class="card">
+<img id="profilePhoto"
+class="profile-photo"
+src=""
+alt="Profile Photo">
 
-    <input
-      id="profileName"
-      placeholder="Your name"
-    >
+<h3 id="profileName">TuHin</h3>
 
-    <textarea
-      id="profileBio"
-      placeholder="About yourself"
-    ></textarea>
+<p id="profileBio">
+Graphic Design • Coding • Web Development
+</p>
 
-    <input
-      id="profileSkill"
-      placeholder="Your skill"
-    >
+<br>
 
-    <input
-      id="profileImage"
-      type="file"
-      accept="image/*"
-    >
+<input id="nameInput" placeholder="Your name">
 
-    <button onclick="saveProfile()">
-      💾 Save Profile
-    </button>
+<textarea id="bioInput"
+placeholder="Write something about yourself"></textarea>
 
-  </div>
+<label>Profile Photo</label>
+<input type="file" id="profileImage" accept="image/*">
 
-  <div class="card profile" id="profileView">
+<button class="btn" onclick="saveProfile()">
+💾 Save Profile
+</button>
 
-    <div style="font-size:60px;">👤</div>
+<button class="btn secondary" onclick="resetProfile()">
+Reset
+</button>
 
-    <h3>TuHin</h3>
-
-    <p>
-      Creative learner and designer.
-    </p>
-
-  </div>
+</div>
 
 </section>
 
@@ -388,22 +486,23 @@ footer{
 
 <section id="skills">
 
-  <h2>🛠️ My Skills</h2>
+<div class="title">
+<h2>🛠️ My Skills</h2>
+<p>Things I am learning and working with.</p>
+</div>
 
-  <p class="subtitle">
-    Things I am learning
-  </p>
+<div class="skills">
 
-  <div class="skills">
+<span class="skill">HTML</span>
+<span class="skill">CSS</span>
+<span class="skill">JavaScript</span>
+<span class="skill">Logo Design</span>
+<span class="skill">Graphic Design</span>
+<span class="skill">Web Design</span>
+<span class="skill">UI Design</span>
+<span class="skill">Creative Design</span>
 
-    <span class="skill">HTML</span>
-    <span class="skill">CSS</span>
-    <span class="skill">JavaScript</span>
-    <span class="skill">Logo Design</span>
-    <span class="skill">Graphic Design</span>
-    <span class="skill">Web Design</span>
-
-  </div>
+</div>
 
 </section>
 
@@ -412,67 +511,33 @@ footer{
 
 <section id="portfolio">
 
-  <h2>🖼️ My Portfolio</h2>
+<div class="title">
+<h2>🚀 Portfolio</h2>
+<p>Add your own projects here.</p>
+</div>
 
-  <p class="subtitle">
-    Add your creative projects
-  </p>
+<div class="card">
 
-  <div class="card">
+<input id="projectTitle"
+placeholder="Project name">
 
-    <input
-      id="projectTitle"
-      placeholder="Project title"
-    >
+<textarea id="projectDescription"
+placeholder="Project description"></textarea>
 
-    <textarea
-      id="projectDescription"
-      placeholder="Project description"
-    ></textarea>
+<label>Project Image (optional)</label>
 
-    <input
-      id="projectImage"
-      type="file"
-      accept="image/*"
-    >
+<input type="file"
+id="projectImage"
+accept="image/*">
 
-    <button onclick="addProject()">
-      ➕ Add Project
-    </button>
+<button class="btn"
+onclick="addProject()">
+➕ Add Project
+</button>
 
-  </div>
+</div>
 
-  <div class="portfolio-grid" id="portfolioList">
-
-    <div class="project">
-
-      <div class="project-img">
-        🌐
-      </div>
-
-      <h3>My First Website</h3>
-
-      <p>
-        My first web project.
-      </p>
-
-    </div>
-
-    <div class="project">
-
-      <div class="project-img">
-        🎨
-      </div>
-
-      <h3>Logo Design</h3>
-
-      <p>
-        A creative logo project.
-      </p>
-
-    </div>
-
-  </div>
+<div id="projectList"></div>
 
 </section>
 
@@ -481,159 +546,91 @@ footer{
 
 <section id="studio">
 
-  <h2>🎨 Design Studio</h2>
+<div class="title">
+<h2>🎨 Design Studio</h2>
+<p>Make a simple design directly from your website.</p>
+</div>
 
-  <p class="subtitle">
-    Create a simple logo or graphic
-  </p>
+<div class="studio">
 
-  <div class="studio">
+<div class="controls">
 
-    <div class="tools">
+<label>Text</label>
+<input id="designText"
+value="TuHin Design"
+oninput="updateDesign()">
 
-      <div>
+<label>Subtitle</label>
+<input id="designSub"
+value="Creative Studio"
+oninput="updateDesign()">
 
-        <label>Text</label>
+<label>Font Size</label>
+<input id="fontSize"
+type="range"
+min="20"
+max="80"
+value="42"
+oninput="updateDesign()">
 
-        <input
-          id="designText"
-          value="TuHin Design"
-          oninput="drawDesign()"
-        >
+<label>Text Color</label>
+<input id="textColor"
+type="color"
+value="#ffffff"
+oninput="updateDesign()">
 
-      </div>
+<label>Background</label>
+<input id="bgColor"
+type="color"
+value="#2764ff"
+oninput="updateDesign()">
 
-      <div>
+<label>Shape</label>
+<select id="shapeType"
+onchange="updateDesign()">
+<option value="circle">Circle</option>
+<option value="square">Square</option>
+<option value="none">None</option>
+</select>
 
-        <label>Font</label>
+<br>
 
-        <select
-          id="fontStyle"
-          onchange="drawDesign()"
-        >
+<button class="btn"
+onclick="downloadDesign()">
+⬇️ Download PNG
+</button>
 
-          <option value="Arial">
-            Arial
-          </option>
+<button class="btn secondary"
+onclick="resetDesign()">
+Reset
+</button>
 
-          <option value="Georgia">
-            Georgia
-          </option>
+</div>
 
-          <option value="Verdana">
-            Verdana
-          </option>
 
-          <option value="Courier New">
-            Courier New
-          </option>
+<div class="preview">
 
-        </select>
+<div id="designCanvas"
+class="design-canvas">
 
-      </div>
+<div id="shape"
+class="shape"></div>
 
-      <div>
+<div id="designTextPreview"
+class="design-text">
+TuHin Design
+</div>
 
-        <label>Text Size</label>
+<div id="designSubPreview"
+class="design-sub">
+Creative Studio
+</div>
 
-        <input
-          id="textSize"
-          type="range"
-          min="20"
-          max="90"
-          value="50"
-          oninput="drawDesign()"
-        >
+</div>
 
-      </div>
+</div>
 
-      <div>
-
-        <label>Text Color</label>
-
-        <input
-          id="textColor"
-          type="color"
-          value="#ffffff"
-          onchange="drawDesign()"
-        >
-
-      </div>
-
-      <div>
-
-        <label>Background</label>
-
-        <input
-          id="bgColor"
-          type="color"
-          value="#2764ff"
-          onchange="drawDesign()"
-        >
-
-      </div>
-
-      <div>
-
-        <label>Shape</label>
-
-        <select
-          id="shape"
-          onchange="drawDesign()"
-        >
-
-          <option value="none">
-            None
-          </option>
-
-          <option value="circle">
-            Circle
-          </option>
-
-          <option value="square">
-            Square
-          </option>
-
-        </select>
-
-      </div>
-
-    </div>
-
-    <br>
-
-    <label>Upload Image</label>
-
-    <input
-      id="designImage"
-      type="file"
-      accept="image/*"
-      onchange="loadImage(event)"
-    >
-
-    <canvas
-      id="designCanvas"
-      width="650"
-      height="350"
-    ></canvas>
-
-    <div class="center">
-
-      <button onclick="drawDesign()">
-        🔄 Update
-      </button>
-
-      <button onclick="downloadDesign()">
-        ⬇️ Download PNG
-      </button>
-
-      <button onclick="resetDesign()">
-        ♻️ Reset
-      </button>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
@@ -642,96 +639,241 @@ footer{
 
 <section id="learn">
 
-  <h2>📚 Learn Graphic Design</h2>
+<div class="title">
+<h2>📚 Learn Graphic Design</h2>
+<p>Complete lessons and track your progress.</p>
+</div>
 
-  <p class="subtitle">
-    Click a lesson
-  </p>
+<div class="card">
 
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
+<h3>Learning Progress</h3>
 
-    <h3>1. 🎨 Color Theory</h3>
+<div class="progress">
+<div id="progressBar"
+class="progress-bar"></div>
+</div>
 
-    <div class="lesson-content">
+<p id="progressText">
+0% Complete
+</p>
 
-      <p>
-        Learn how colors work together.
-        Practice primary, secondary and
-        complementary colors.
-      </p>
-
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </button>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
+<div class="grid">
 
-    <h3>2. ✍️ Typography</h3>
+<div class="card lesson" onclick="completeLesson(this)">
+<h3>🎨 Lesson 1</h3>
+<p>Learn basic colors and color combinations.</p>
+</div>
 
-    <div class="lesson-content">
+<div class="card lesson" onclick="completeLesson(this)">
+<h3>✏️ Lesson 2</h3>
+<p>Learn typography, fonts and text hierarchy.</p>
+</div>
 
-      <p>
-        Learn about fonts, size,
-        spacing and alignment.
-      </p>
+<div class="card lesson" onclick="completeLesson(this)">
+<h3>📐 Lesson 3</h3>
+<p>Learn spacing, alignment and composition.</p>
+</div>
 
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </button>
+<div class="card lesson" onclick="completeLesson(this)">
+<h3>🖼️ Lesson 4</h3>
+<p>Learn how to create a simple logo.</p>
+</div>
 
-    </div>
+<div class="card lesson" onclick="completeLesson(this)">
+<h3>💻 Lesson 5</h3>
+<p>Learn the basics of web design.</p>
+</div>
 
-  </div>
+<div class="card lesson" onclick="completeLesson(this)">
+<h3>🚀 Lesson 6</h3>
+<p>Build your first creative portfolio.</p>
+</div>
 
+</div>
 
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
-
-    <h3>3. 🖼️ Logo Design</h3>
-
-    <div class="lesson-content">
-
-      <p>
-        A good logo should be simple,
-        clear and recognizable.
-      </p>
-
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </button>
-
-    </div>
-
-  </div>
+</section>
 
 
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
+<!-- CONTACT -->
 
-    <h3>4. 📐 Composition</h3>
+<section id="contact">
 
-    <div class="lesson-content">
+<div class="title">
+<h2>📩 Contact Me</h2>
+<p>Let's connect.</p>
+</div>
 
-      <p>
-        Learn balance, spacing,
-        contrast and visual hierarchy.
-      </p>
+<div class="card contact">
 
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </
+<p>
+📧 Email:
+<a href="mailto:tuhinali1732@gmail.com">
+tuhinali1732@gmail.com
+</a>
+</p>
+
+<br>
+
+<a
+class="btn"
+href="https://wa.me/8801326916317"
+target="_blank">
+💬 WhatsApp Me
+</a>
+
+<br>
+
+<p>
+WhatsApp: 01326916317
+</p>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026 TuHin — Creative Studio
+
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("show");
+}
+
+function closeMenu(){
+  document.getElementById("nav").classList.remove("show");
+}
+
+
+/* DARK / LIGHT MODE */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("light");
+
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("light")
+    ? "light"
+    : "dark"
+  );
+
+}
+
+if(localStorage.getItem("theme")==="light"){
+  document.body.classList.add("light");
+}
+
+
+/* PROFILE */
+
+function saveProfile(){
+
+  const name =
+  document.getElementById("nameInput").value.trim();
+
+  const bio =
+  document.getElementById("bioInput").value.trim();
+
+  if(name){
+    document.getElementById("profileName").textContent=name;
+    localStorage.setItem("profileName",name);
+  }
+
+  if(bio){
+    document.getElementById("profileBio").textContent=bio;
+    localStorage.setItem("profileBio",bio);
+  }
+
+  const file =
+  document.getElementById("profileImage").files[0];
+
+  if(file){
+
+    const reader=new FileReader();
+
+    reader.onload=function(e){
+
+      document.getElementById("profilePhoto").src=e.target.result;
+
+      localStorage.setItem(
+        "profilePhoto",
+        e.target.result
+      );
+
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  alert("Profile saved! ✅");
+}
+
+
+function loadProfile(){
+
+  const name=localStorage.getItem("profileName");
+  const bio=localStorage.getItem("profileBio");
+  const photo=localStorage.getItem("profilePhoto");
+
+  if(name){
+    document.getElementById("profileName").textContent=name;
+  }
+
+  if(bio){
+    document.getElementById("profileBio").textContent=bio;
+  }
+
+  if(photo){
+    document.getElementById("profilePhoto").src=photo;
+  }
+
+}
+
+
+function resetProfile(){
+
+  localStorage.removeItem("profileName");
+  localStorage.removeItem("profileBio");
+  localStorage.removeItem("profilePhoto");
+
+  document.getElementById("profileName").textContent="TuHin";
+
+  document.getElementById("profileBio").textContent=
+  "Graphic Design • Coding • Web Development";
+
+  document.getElementById("profilePhoto").src="";
+
+}
+
+
+/* PORTFOLIO */
+
+function addProject(){
+
+  const title=
+  document.getElementById("projectTitle").value.trim();
+
+  const description=
+  document.getElementById("projectDescription").value.trim();
+
+  const file=
+  document.getElementById("projectImage").files[0];
+
+  if(!title){
+    alert("Please enter a project name.");
+    return;
+  }
+
+  const project={
+   
