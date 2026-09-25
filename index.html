@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TuHin | Creative Studio</title>
+<title>TuHin Creative Studio</title>
 
 <style>
 *{
@@ -14,67 +14,42 @@
   font-family:Arial,sans-serif;
 }
 
-:root{
-  --bg:#070d25;
-  --card:#101a3c;
-  --text:#fff;
-  --muted:#b8c2df;
-  --blue:#4f9cff;
-  --border:#263761;
-}
-
 body{
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
+  background:#070d25;
+  color:white;
 }
 
 header{
+  background:#0d1535;
+  padding:15px;
+  text-align:center;
   position:sticky;
   top:0;
-  z-index:1000;
-  background:#080e27;
-  border-bottom:1px solid var(--border);
-  padding:14px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
 }
 
-.logo{
-  color:var(--blue);
-  font-size:24px;
-  font-weight:bold;
+header h2{
+  color:#4f9cff;
 }
 
 nav{
-  display:flex;
-  gap:15px;
+  margin-top:10px;
 }
 
 nav a{
   color:white;
   text-decoration:none;
+  margin:5px;
   font-size:13px;
 }
 
-.menu-btn{
-  display:none;
-  background:#2764ff;
-  border:0;
-  color:white;
-  border-radius:8px;
-  padding:8px 12px;
-}
-
 section{
-  max-width:1000px;
+  padding:70px 20px;
+  max-width:900px;
   margin:auto;
-  padding:70px 6%;
 }
 
 .hero{
-  min-height:85vh;
+  min-height:80vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -82,67 +57,30 @@ section{
   text-align:center;
 }
 
-.hero small{
-  color:var(--blue);
-  letter-spacing:2px;
-}
-
 .hero h1{
-  font-size:42px;
+  font-size:40px;
   margin:20px 0;
 }
 
 .blue{
-  color:var(--blue);
+  color:#4f9cff;
 }
 
 button{
   background:#2764ff;
   color:white;
   border:0;
-  padding:11px 18px;
+  padding:12px 20px;
   border-radius:25px;
-  cursor:pointer;
-  margin:5px;
-}
-
-button:hover{
-  opacity:.85;
-}
-
-h2{
-  text-align:center;
-  margin-bottom:8px;
-}
-
-.subtitle{
-  color:var(--muted);
-  text-align:center;
-  margin-bottom:25px;
+  margin:10px 5px;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
+  background:#101a3c;
+  border:1px solid #263761;
   padding:20px;
-  margin:15px 0;
-}
-
-input,
-textarea,
-select{
-  width:100%;
-  padding:12px;
-  margin:6px 0 12px;
-  border-radius:9px;
-  border:1px solid var(--border);
-  background:#080f29;
-  color:white;
-}
-
-textarea{
-  min-height:90px;
+  border-radius:15px;
+  margin-top:20px;
 }
 
 .skills{
@@ -154,584 +92,171 @@ textarea{
 
 .skill{
   background:#183a9c;
-  padding:8px 14px;
+  padding:8px 15px;
   border-radius:20px;
-  font-size:13px;
 }
 
-.profile{
+h2{
   text-align:center;
+  margin-bottom:15px;
 }
 
-.profile-photo{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid var(--blue);
-}
-
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:15px;
-}
-
-.project{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:15px;
-}
-
-.project-img{
-  width:100%;
-  height:140px;
-  border-radius:10px;
-  object-fit:cover;
-  background:linear-gradient(135deg,#2475ff,#833cff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:45px;
-  margin-bottom:12px;
-}
-
-.studio{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:18px;
-}
-
-.tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-#designCanvas{
-  width:100%;
-  max-width:650px;
-  height:auto;
-  background:white;
-  border-radius:10px;
-  display:block;
-  margin:20px auto;
-}
-
-.center{
+p{
+  color:#b8c2df;
   text-align:center;
-}
-
-.lesson{
-  cursor:pointer;
-}
-
-.lesson-content{
-  display:none;
-  color:var(--muted);
-  margin-top:10px;
-}
-
-.lesson.active .lesson-content{
-  display:block;
 }
 
 footer{
   text-align:center;
   padding:30px;
   background:#050a1c;
-  color:#8995b5;
 }
 
-@media(max-width:700px){
-
-  nav{
-    display:none;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  nav.show{
-    display:flex;
-    position:absolute;
-    top:58px;
-    right:10px;
-    background:#101a3c;
-    padding:15px;
-    border-radius:12px;
-    flex-direction:column;
-  }
-
+@media(max-width:600px){
   .hero h1{
-    font-size:32px;
+    font-size:30px;
   }
 
-  section{
-    padding:55px 5%;
-  }
-
-  .tools{
-    grid-template-columns:1fr;
+  nav a{
+    font-size:11px;
   }
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
 
-  <div class="logo">TuHin.</div>
+<h2>TuHin.</h2>
 
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#profile">Profile</a>
-    <a href="#skills">Skills</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#studio">Studio</a>
-    <a href="#learn">Learn</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+<nav>
+<a href="#home">Home</a>
+<a href="#profile">Profile</a>
+<a href="#skills">Skills</a>
+<a href="#studio">Studio</a>
+<a href="#contact">Contact</a>
+</nav>
 
 </header>
 
 
-<!-- HOME -->
-
 <section class="hero" id="home">
 
-  <small>WELCOME TO MY CREATIVE WORLD</small>
+<small>WELCOME TO MY CREATIVE WORLD</small>
 
-  <h1>
-    Hello, I'm
-    <span class="blue">TuHin</span> 👋
-  </h1>
+<h1>
+Hello, I'm
+<span class="blue">TuHin</span> 👋
+</h1>
 
-  <p>
-    Graphic Design • Coding • Web Development
-  </p>
+<p>
+Graphic Design • Coding • Web Development
+</p>
 
-  <br>
-
-  <button onclick="goTo('studio')">
-    🎨 Create Design
-  </button>
-
-  <button onclick="goTo('learn')">
-    📚 Learn Design
-  </button>
+<button onclick="document.getElementById('studio').scrollIntoView()">
+🎨 Create Design
+</button>
 
 </section>
 
-
-<!-- PROFILE -->
 
 <section id="profile">
 
-  <h2>👤 My Profile</h2>
+<h2>👤 My Profile</h2>
 
-  <p class="subtitle">
-    Create your personal profile
-  </p>
+<div class="card">
 
-  <div class="card">
+<h3>TuHin 👋</h3>
 
-    <input
-      id="profileName"
-      placeholder="Your name"
-    >
+<br>
 
-    <textarea
-      id="profileBio"
-      placeholder="About yourself"
-    ></textarea>
+<p>
+I am learning graphic design,
+coding and web development.
+</p>
 
-    <input
-      id="profileSkill"
-      placeholder="Your skill"
-    >
-
-    <input
-      id="profileImage"
-      type="file"
-      accept="image/*"
-    >
-
-    <button onclick="saveProfile()">
-      💾 Save Profile
-    </button>
-
-  </div>
-
-  <div class="card profile" id="profileView">
-
-    <div style="font-size:60px;">👤</div>
-
-    <h3>TuHin</h3>
-
-    <p>
-      Creative learner and designer.
-    </p>
-
-  </div>
+</div>
 
 </section>
 
-
-<!-- SKILLS -->
 
 <section id="skills">
 
-  <h2>🛠️ My Skills</h2>
+<h2>🛠️ My Skills</h2>
 
-  <p class="subtitle">
-    Things I am learning
-  </p>
+<br>
 
-  <div class="skills">
+<div class="skills">
 
-    <span class="skill">HTML</span>
-    <span class="skill">CSS</span>
-    <span class="skill">JavaScript</span>
-    <span class="skill">Logo Design</span>
-    <span class="skill">Graphic Design</span>
-    <span class="skill">Web Design</span>
+<span class="skill">HTML</span>
+<span class="skill">CSS</span>
+<span class="skill">JavaScript</span>
+<span class="skill">Logo Design</span>
+<span class="skill">Graphic Design</span>
+<span class="skill">Web Design</span>
 
-  </div>
+</div>
 
 </section>
 
-
-<!-- PORTFOLIO -->
-
-<section id="portfolio">
-
-  <h2>🖼️ My Portfolio</h2>
-
-  <p class="subtitle">
-    Add your creative projects
-  </p>
-
-  <div class="card">
-
-    <input
-      id="projectTitle"
-      placeholder="Project title"
-    >
-
-    <textarea
-      id="projectDescription"
-      placeholder="Project description"
-    ></textarea>
-
-    <input
-      id="projectImage"
-      type="file"
-      accept="image/*"
-    >
-
-    <button onclick="addProject()">
-      ➕ Add Project
-    </button>
-
-  </div>
-
-  <div class="portfolio-grid" id="portfolioList">
-
-    <div class="project">
-
-      <div class="project-img">
-        🌐
-      </div>
-
-      <h3>My First Website</h3>
-
-      <p>
-        My first web project.
-      </p>
-
-    </div>
-
-    <div class="project">
-
-      <div class="project-img">
-        🎨
-      </div>
-
-      <h3>Logo Design</h3>
-
-      <p>
-        A creative logo project.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DESIGN STUDIO -->
 
 <section id="studio">
 
-  <h2>🎨 Design Studio</h2>
+<h2>🎨 Design Studio</h2>
 
-  <p class="subtitle">
-    Create a simple logo or graphic
-  </p>
+<div class="card">
 
-  <div class="studio">
+<p>
+Your Design Studio is ready!
+</p>
 
-    <div class="tools">
+<br>
 
-      <div>
+<div style="
+background:#2764ff;
+padding:50px 20px;
+border-radius:15px;
+text-align:center;
+font-size:25px;
+">
 
-        <label>Text</label>
+TuHin Design 🎨
 
-        <input
-          id="designText"
-          value="TuHin Design"
-          oninput="drawDesign()"
-        >
+</div>
 
-      </div>
-
-      <div>
-
-        <label>Font</label>
-
-        <select
-          id="fontStyle"
-          onchange="drawDesign()"
-        >
-
-          <option value="Arial">
-            Arial
-          </option>
-
-          <option value="Georgia">
-            Georgia
-          </option>
-
-          <option value="Verdana">
-            Verdana
-          </option>
-
-          <option value="Courier New">
-            Courier New
-          </option>
-
-        </select>
-
-      </div>
-
-      <div>
-
-        <label>Text Size</label>
-
-        <input
-          id="textSize"
-          type="range"
-          min="20"
-          max="90"
-          value="50"
-          oninput="drawDesign()"
-        >
-
-      </div>
-
-      <div>
-
-        <label>Text Color</label>
-
-        <input
-          id="textColor"
-          type="color"
-          value="#ffffff"
-          onchange="drawDesign()"
-        >
-
-      </div>
-
-      <div>
-
-        <label>Background</label>
-
-        <input
-          id="bgColor"
-          type="color"
-          value="#2764ff"
-          onchange="drawDesign()"
-        >
-
-      </div>
-
-      <div>
-
-        <label>Shape</label>
-
-        <select
-          id="shape"
-          onchange="drawDesign()"
-        >
-
-          <option value="none">
-            None
-          </option>
-
-          <option value="circle">
-            Circle
-          </option>
-
-          <option value="square">
-            Square
-          </option>
-
-        </select>
-
-      </div>
-
-    </div>
-
-    <br>
-
-    <label>Upload Image</label>
-
-    <input
-      id="designImage"
-      type="file"
-      accept="image/*"
-      onchange="loadImage(event)"
-    >
-
-    <canvas
-      id="designCanvas"
-      width="650"
-      height="350"
-    ></canvas>
-
-    <div class="center">
-
-      <button onclick="drawDesign()">
-        🔄 Update
-      </button>
-
-      <button onclick="downloadDesign()">
-        ⬇️ Download PNG
-      </button>
-
-      <button onclick="resetDesign()">
-        ♻️ Reset
-      </button>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- LEARN -->
+<section id="contact">
 
-<section id="learn">
+<h2>📩 Contact Me</h2>
 
-  <h2>📚 Learn Graphic Design</h2>
+<div class="card">
 
-  <p class="subtitle">
-    Click a lesson
-  </p>
+<p>
+📧 Email: your@email.com
+</p>
 
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
+<br>
 
-    <h3>1. 🎨 Color Theory</h3>
+<p>
+💬 WhatsApp: Your Number
+</p>
 
-    <div class="lesson-content">
+</div>
 
-      <p>
-        Learn how colors work together.
-        Practice primary, secondary and
-        complementary colors.
-      </p>
-
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </button>
-
-    </div>
-
-  </div>
+</section>
 
 
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
+<footer>
 
-    <h3>2. ✍️ Typography</h3>
+© 2026 TuHin — Creative Studio
 
-    <div class="lesson-content">
+</footer>
 
-      <p>
-        Learn about fonts, size,
-        spacing and alignment.
-      </p>
-
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
-
-    <h3>3. 🖼️ Logo Design</h3>
-
-    <div class="lesson-content">
-
-      <p>
-        A good logo should be simple,
-        clear and recognizable.
-      </p>
-
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    class="card lesson"
-    onclick="toggleLesson(this)"
-  >
-
-    <h3>4. 📐 Composition</h3>
-
-    <div class="lesson-content">
-
-      <p>
-        Learn balance, spacing,
-        contrast and visual hierarchy.
-      </p>
-
-      <button onclick="completeLesson(event)">
-        ✅ Complete
-      </
+</body>
+</html>
