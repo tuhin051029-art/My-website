@@ -637,67 +637,192 @@ Creative Studio
 
 <!-- LEARN -->
 
+
+<b>🔴 Pr
 <section id="learn">
 
 <div class="title">
 <h2>📚 Learn Graphic Design</h2>
-<p>Complete lessons and track your progress.</p>
+<p>Click a lesson to start learning.</p>
 </div>
-
-<div class="card">
-
-<h3>Learning Progress</h3>
-
-<div class="progress">
-<div id="progressBar"
-class="progress-bar"></div>
-</div>
-
-<p id="progressText">
-0% Complete
-</p>
-
-</div>
-
 
 <div class="grid">
 
-<div class="card lesson" onclick="completeLesson(this)">
-<h3>🎨 Lesson 1</h3>
-<p>Learn basic colors and color combinations.</p>
+<div class="card lesson" onclick="openLesson('color')">
+<h3>1. 🎨 Color Theory</h3>
+<p>Learn colors and color combinations.</p>
 </div>
 
-<div class="card lesson" onclick="completeLesson(this)">
-<h3>✏️ Lesson 2</h3>
-<p>Learn typography, fonts and text hierarchy.</p>
+<div class="card lesson" onclick="openLesson('type')">
+<h3>2. ✍️ Typography</h3>
+<p>Learn fonts and text design.</p>
 </div>
 
-<div class="card lesson" onclick="completeLesson(this)">
-<h3>📐 Lesson 3</h3>
-<p>Learn spacing, alignment and composition.</p>
+<div class="card lesson" onclick="openLesson('logo')">
+<h3>3. 🖼️ Logo Design</h3>
+<p>Learn the basics of creating logos.</p>
 </div>
 
-<div class="card lesson" onclick="completeLesson(this)">
-<h3>🖼️ Lesson 4</h3>
-<p>Learn how to create a simple logo.</p>
+<div class="card lesson" onclick="openLesson('composition')">
+<h3>4. 📐 Composition</h3>
+<p>Learn spacing, alignment and balance.</p>
 </div>
 
-<div class="card lesson" onclick="completeLesson(this)">
-<h3>💻 Lesson 5</h3>
-<p>Learn the basics of web design.</p>
 </div>
 
-<div class="card lesson" onclick="completeLesson(this)">
-<h3>🚀 Lesson 6</h3>
-<p>Build your first creative portfolio.</p>
-</div>
+<div id="lessonBox" class="card hidden">
+
+<h2 id="lessonTitle"></h2>
+
+<p id="lessonContent"></p>
+
+<br>
+
+<button class="btn" onclick="closeLesson()">
+⬅️ Back to Lessons
+</button>
 
 </div>
 
 </section>
 
 
-<!-- CONTACT -->
+<script>
+
+function openLesson(type){
+
+const title=document.getElementById("lessonTitle");
+const content=document.getElementById("lessonContent");
+const box=document.getElementById("lessonBox");
+
+box.classList.remove("hidden");
+
+if(type==="color"){
+
+title.innerHTML="🎨 Color Theory";
+
+content.innerHTML=`
+<b>What is Color Theory?</b><br><br>
+
+Color Theory helps designers understand
+how colors work together.
+
+<br><br>imary Colors</b><br>
+Red, Yellow, Blue
+
+<br><br>
+
+<b>🟠 Secondary Colors</b><br>
+Orange, Green, Purple
+
+<br><br>
+
+<b>💡 Tip:</b><br>
+Use colors that have good contrast
+so your design is easy to read.
+`;
+
+}
+
+else if(type==="type"){
+
+title.innerHTML="✍️ Typography";
+
+content.innerHTML=`
+<b>What is Typography?</b><br><br>
+
+Typography means choosing and arranging
+text so it looks clear and attractive.
+
+<br><br>
+
+<b>Learn these:</b><br>
+• Font size<br>
+• Font style<br>
+• Line spacing<br>
+• Text alignment<br>
+• Heading and paragraph hierarchy
+
+<br><br>
+
+<b>💡 Tip:</b><br>
+Don't use too many different fonts
+in one design.
+`;
+
+}
+
+else if(type==="logo"){
+
+title.innerHTML="🖼️ Logo Design";
+
+content.innerHTML=`
+<b>What is a Logo?</b><br><br>
+
+A logo is a visual symbol that represents
+a person, brand or business.
+
+<br><br>
+
+<b>Common Logo Types:</b><br>
+• Wordmark<br>
+• Lettermark<br>
+• Symbol<br>
+• Combination mark
+
+<br><br>
+
+<b>💡 Tip:</b><br>
+A good logo should be simple,
+recognizable and readable.
+`;
+
+}
+
+else if(type==="composition"){
+
+title.innerHTML="📐 Composition";
+
+content.innerHTML=`
+<b>What is Composition?</b><br><br>
+
+Composition means arranging elements
+inside a design.
+
+<br><br>
+
+<b>Important principles:</b><br>
+• Alignment<br>
+• Spacing<br>
+• Balance<br>
+• Contrast<br>
+• Visual hierarchy
+
+<br><br>
+
+<b>💡 Tip:</b><br>
+Keep enough empty space around
+important elements.
+`;
+
+}
+
+box.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function closeLesson(){
+
+document.getElementById("lessonBox")
+.classList.add("hidden");
+
+}
+
+</script>
+  <!-- CONTACT -->
 
 <section id="contact">
 
